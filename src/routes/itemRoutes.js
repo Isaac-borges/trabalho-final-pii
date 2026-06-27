@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const itemController = require("./itemController");
+const itemController = require("../controllers/itemController");
 
 router.get("/turmas", itemController.getTurmas);
 router.post("/turmas", itemController.createTurma);
