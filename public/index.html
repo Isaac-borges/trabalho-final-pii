@@ -1,11 +1,54 @@
 <!doctype html>
-<html>
+<html lang="pt-BR">
     <head>
-        <title>Controle de Disciplina</title>
-        <link rel="stylesheet" href="./css/styles.css" />
-        <script src="./js/script.js" defer></script>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Diário de Classe - Turmas</title>
+        <link rel="stylesheet" href="./css/style.css" />
+        <script src="./js/script.js"></script>
     </head>
     <body>
-        <div>Hello World!</div>
+        <header>
+            <h1>Diário de Classe</h1>
+            <button id="btn-tema" class="btn btn-alternar">
+                Alternar Tema
+            </button>
+        </header>
+
+        <main>
+            <section>
+                <h2>Nova Turma (Mestre)</h2>
+                <form id="form-turma">
+                    <div class="form-group">
+                        <input
+                            type="text"
+                            id="nome_disciplina"
+                            placeholder="Nome da Disciplina (Ex: Matemática)"
+                            required
+                            minlength="3"
+                        />
+                        <input
+                            type="text"
+                            id="ano_letivo"
+                            placeholder="Ano/Período (Ex: 2026/1)"
+                            required
+                        />
+                        <select id="turno">
+                            <option value="Matutino">Matutino</option>
+                            <option value="Vespertino">Vespertino</option>
+                            <option value="Noturno">Noturno</option>
+                        </select>
+                        <button type="submit" class="btn btn-primario">
+                            Criar Turma
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <section>
+                <h2>Turmas Cadastradas</h2>
+                <div id="lista-turmas" class="grid-turmas"></div>
+            </section>
+        </main>
     </body>
 </html>

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Diário de Classe - Alunos</title>
+        <link rel="stylesheet" href="/css/style.css" />
+    </head>
+    <body>
+        <header>
+            <div>
+                <a href="/" class="btn btn-alternar" style="margin-right: 15px"
+                    >← Voltar</a
+                >
+                <h1 id="titulo-turma" style="display: inline-block">
+                    Carregando Turma...
+                </h1>
+            </div>
+            <button id="btn-tema" class="btn btn-alternar">
+                Alternar Tema
+            </button>
+        </header>
+
+        <main>
+            <section>
+                <h2>Matricular Novo Aluno (Detalhe)</h2>
+                <form id="form-aluno">
+                    <div class="form-group">
+                        <input
+                            type="text"
+                            id="nome_completo"
+                            placeholder="Nome Completo do Aluno"
+                            required
+                        />
+                        <input
+                            type="text"
+                            id="matricula"
+                            placeholder="Nº de Matrícula"
+                            required
+                        />
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="E-mail (deve conter @)"
+                            required
+                        />
+                        <button type="submit" class="btn btn-primario">
+                            Matricular
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <section>
+                <h2>Lista de Alunos (Ordenada A-Z pelo Servidor)</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Matrícula</th>
+                            <th>E-mail</th>
+                            <th>Nota 1</th>
+                            <th>Nota 2</th>
+                            <th>Faltas</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabela-alunos"></tbody>
+                </table>
+            </section>
+        </main>
+
+        <script src="/js/frontend.js"></script>
+    </body>
+</html>

@@ -1,0 +1,153 @@
+:root {
+    --bg-principal: #f4f6f9;
+    --bg-card: #ffffff;
+    --texto-principal: #333333;
+    --texto-secundario: #666666;
+    --cor-primaria: #4a90e2;
+    --cor-sucesso: #2ecc71;
+    --cor-perigo: #e74c3c;
+    --borda: #dddddd;
+}
+
+body.dark-theme {
+    --bg-principal: #1e1e24;
+    --bg-card: #2a2a32;
+    --texto-principal: #f5f5f5;
+    --texto-secundario: #b0b0b0;
+    --cor-primaria: #357abd;
+    --borda: #444448;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-principal);
+    color: var(--texto-principal);
+    transition:
+        background-color 0.3s,
+        color 0.3s;
+    padding-bottom: 50px;
+}
+
+header {
+    background-color: var(--bg-card);
+    border-bottom: 1px solid var(--borda);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto 30px auto;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+section {
+    background-color: var(--bg-card);
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid var(--borda);
+    margin-bottom: 30px;
+}
+
+h1,
+h2 {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+input,
+select {
+    padding: 10px;
+    border: 1px solid var(--borda);
+    border-radius: 4px;
+    background-color: var(--bg-card);
+    color: var(--texto-principal);
+    flex: 1;
+    min-width: 150px;
+}
+
+button,
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-primario {
+    background-color: var(--cor-primaria);
+    color: white;
+}
+.btn-sucesso {
+    background-color: var(--cor-sucesso);
+    color: white;
+}
+.btn-perigo {
+    background-color: var(--cor-perigo);
+    color: white;
+}
+.btn-alternar {
+    background-color: transparent;
+    border: 1px solid var(--texto-principal);
+    color: var(--texto-principal);
+}
+
+.grid-turmas {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.card-turma {
+    background-color: var(--bg-card);
+    border: 1px solid var(--borda);
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th,
+td {
+    padding: 12px;
+    border-bottom: 1px solid var(--borda);
+    text-align: left;
+}
+
+th {
+    background-color: var(--bg-principal);
+    color: var(--texto-principal);
+}
+
+.input-tabela {
+    width: 60px;
+    padding: 5px;
+    min-width: auto;
+}
