@@ -151,3 +151,8 @@ th {
     padding: 5px;
     min-width: auto;
 }
+
+.excluir-turma {
+    margin-bottom: 40px;
+    text-align: right;
+}

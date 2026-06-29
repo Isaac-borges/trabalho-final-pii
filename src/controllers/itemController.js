@@ -85,6 +85,12 @@ const updateAluno = async (req, res) => {
     const idAluno = req.params.id;
     const { nome_completo, matricula, email } = req.body;
 
+    if (!email || !email.includes("@")) {
+      return res
+        .status(400)
+        .json({ erro: "Forneça um endereço de e-mail válido contendo @." });
+    }
+
     const comandoSql = `
             UPDATE alunos
             SET nome_completo = $1, matricula = $2, email = $3
@@ -111,6 +117,12 @@ const patchNotasAluno = async (req, res) => {
   try {
     const idAluno = req.params.id;
     const { nota_bimestre_1, nota_bimestre_2, faltas } = req.body;
+
+    if (isNaN(nota_bimestre_1) || isNaN(nota_bimestre_2)) {
+      return res
+        .status(400)
+        .json({ erro: "As notas devem ser estritamente numéricas." });
+    }
 
     if (
       nota_bimestre_1 < 0 ||
@@ -153,6 +165,20 @@ const deleteAluno = async (req, res) => {
   }
 };
 
+const deleteTurma = async (req, res) => {
+  try {
+    const idTurma = req.params.id;
+
+    const comandoSql = "DELETE FROM turmas WHERE id = $1";
+    await pool.query(comandoSql, [idTurma]);
+
+    res.status(204).send();
+  } catch (erro) {
+    console.error(erro);
+    res.status(500).json({ erro: "Erro ao deletar turma" });
+  }
+};
+
 module.exports = {
   getTurmas,
   createTurma,
@@ -161,4 +187,5 @@ module.exports = {
   updateAluno,
   patchNotasAluno,
   deleteAluno,
+  deleteTurma,
 };

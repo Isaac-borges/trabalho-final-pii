@@ -83,8 +83,30 @@ document.addEventListener("DOMContentLoaded", () => {
   if (tabelaAlunos && idTurmaAtual) {
     const formAluno = document.getElementById("form-aluno");
     const tituloTurma = document.getElementById("titulo-turma");
+    const btnExcluirTurma = document.getElementById("btn-excluir-turma");
 
     tituloTurma.textContent = `Diário da Turma #${idTurmaAtual}`;
+
+    if (btnExcluirTurma) {
+      btnExcluirTurma.addEventListener("click", async () => {
+        const confirmar = confirm(
+          "ATENÇÃO: Tem certeza que deseja excluir esta turma?\nTodos os alunos matriculados nela também serão apagados para sempre!",
+        );
+
+        if (confirmar) {
+          const resposta = await fetch(`/api/turmas/${idTurmaAtual}`, {
+            method: "DELETE",
+          });
+
+          if (resposta.ok) {
+            alert("Turma excluída com sucesso!");
+            window.location.href = "/";
+          } else {
+            alert("Erro ao excluir a turma.");
+          }
+        }
+      });
+    }
 
     const carregarAlunos = async () => {
       tabelaAlunos.textContent = "";
@@ -147,6 +169,11 @@ document.addEventListener("DOMContentLoaded", () => {
               return;
             }
 
+            if (isNaN(n1) || isNaN(n2)) {
+              alert("Erro Cliente: Valor inserido nas notas não é numérico!");
+              return;
+            }
+
             const respPatch = await fetch(`/api/alunos/${aluno.id}/notas`, {
               method: "PATCH",
               headers: { "Content-Type": "application/json" },
@@ -172,7 +199,11 @@ document.addEventListener("DOMContentLoaded", () => {
               aluno.nome_completo,
             );
             const novaMatricula = prompt("Mudar matrícula:", aluno.matricula);
-            const novoEmail = prompt("Mudar e-mail:", aluno.email);
+            let novoEmail = prompt("Mudar e-mail:", aluno.email);
+
+            while (!novoEmail.includes("@")) {
+              novoEmail = prompt("O email deve conter '@'!", aluno.email);
+            }
 
             if (novoNome && novaMatricula && novoEmail) {
               const respPut = await fetch(`/api/alunos/${aluno.id}`, {

@@ -4,7 +4,8 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Diário de Classe - Alunos</title>
-        <link rel="stylesheet" href="/css/style.css" />
+        <link rel="stylesheet" href="/css/styles.css" />
+        <script src="/js/script.js" defer></script>
     </head>
     <body>
         <header>
@@ -22,8 +23,14 @@
         </header>
 
         <main>
+            <div class="excluir-turma">
+                <button id="btn-excluir-turma" class="btn btn-perigo">
+                    Excluir Esta Turma
+                </button>
+            </div>
+
             <section>
-                <h2>Matricular Novo Aluno (Detalhe)</h2>
+                <h2>Matricular Novo Aluno</h2>
                 <form id="form-aluno">
                     <div class="form-group">
                         <input
@@ -69,7 +76,5 @@
                 </table>
             </section>
         </main>
-
-        <script src="/js/frontend.js"></script>
     </body>
 </html>
